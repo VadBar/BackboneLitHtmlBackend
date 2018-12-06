@@ -9,6 +9,7 @@ const filterByRules = require('./routes/filterByRules.js');
 const filter = require('./routes/filter.js');
 const pagination = require('./routes/pagination.js');
 const managerColumns = require('./routes/managerColumns.js');
+const advancedTableComponents = require('./routes/advancedTableComponents.js');
 const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
@@ -26,6 +27,7 @@ app.use('/api/filterByRules', filterByRules);
 app.use('/api/managerColumns', managerColumns);
 app.use('/api/filter', filter);
 app.use('/api/pagination', pagination);
+app.use('/api/advancedTableComponents', advancedTableComponents);
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/dist/'));
     app.get('*', (req, res) => {
