@@ -20,11 +20,8 @@ module.exports.getById = async (req, res) => {
 };
 module.exports.create = async (req, res) => {
     const filt = new advancedTableComponents({ 
-        position: req.body.position,
-        step: req.body.step,
-        from: req.body.from,
-        to: req.body.to,
-        id: req.body.id
+        value: req.body.value,
+        _id: req.body.id
     });
     try{
         await filt.save();
@@ -35,9 +32,9 @@ module.exports.create = async (req, res) => {
 };
 module.exports.update = async (req, res) => {
     try{
-         const filt = await filter.findOneAndUpdate(
+         const filt = await advancedTableComponents.findOneAndUpdate(
              {
-                id: req.params.id
+                _id: req.params.id
              },
              {
                  $set: req.body
